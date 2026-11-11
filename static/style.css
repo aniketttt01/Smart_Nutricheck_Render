@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fa;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 240px;
+    background: linear-gradient(180deg, #0f766e, #115e59);
+    color: white;
+    padding: 25px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar li {
+    padding: 10px;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px;
+}
+
+button {
+    background: #0f766e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+.result-card {
+    animation: slideUp 0.6s ease;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+    display: inline-block;
+}
+
+.status-badge.healthy { background: #16a34a; }
+.status-badge.risk { background: #d97706; }
+.status-badge.malnourished { background: #dc2626; }
+
+.confidence-bar {
+    background: #e5e7eb;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.confidence-fill {
+    background: linear-gradient(90deg, #0f766e, #22c55e);
+    color: white;
+    padding: 6px;
+    border-radius: 20px;
+}
+
+.pdf-btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 16px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.ai-note {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #555;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NGO Malnutrition Detection System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="app-container">
+
+    <aside class="sidebar">
+        <h2>Smart Nutricheck</h2>
+        <p>Malnutrition Care Initiative</p>
+        <ul>
+            <li>Dashboard</li>
+            <li>New Screening</li>
+            <li>Reports</li>
+            <li>Awareness</li>
+        </ul>
+    </aside>
+
+    <main class="main-content">
+
+        <section>
+            <h1>Malnutrition Detection System</h1>
+            <p>AI-assisted nutrition assessment</p>
+        </section>
+
+        <section>
+            <h2>New Child Screening</h2>
+
+            <form method="POST" enctype="multipart/form-data">
+                <label>Child Name</label>
+                <input type="text" name="child_name">
+
+                <label>Age (years)</label>
+                <input type="number" name="age" required>
+
+                <label>Height (cm)</label>
+                <input type="number" name="height" required>
+
+                <label>Weight (kg)</label>
+                <input type="number" name="weight" required>
+
+                <label>Upload Child Image</label>
+                <input type="file" name="child_image" required>
+
+                <button type="submit">Analyze</button>
+            </form>
+        </section>
+
+        {% if result %}
+        <section class="result-card {{ final_status|lower }}">
+            <h2>Assessment Result</h2>
+
+            {% if image_path %}
+            <div style="text-align: center; margin-bottom: 20px;">
+                <img src="{{ image_path }}" alt="Child Image" style="max-width: 300px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </div>
+            {% endif %}
+
+            <p><b>Name:</b> {{ name }}</p>
+            <p><b>Age:</b> {{ age }}</p>
+            <p><b>BMI:</b> {{ bmi }}</p>
+            <p><b>AI Confidence:</b> {{ confidence }}%</p>
+
+            <div class="status-badge {{ final_status|lower }}">
+                {{ final_status }}
+            </div>
+
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width: {{ confidence }}%;">
+                    {{ confidence }}%
+                </div>
+            </div>
+
+            <p class="ai-note">⚠️ This is an AI-based prediction and not a medical diagnosis.</p>
+
+            <a href="/download-pdf" class="pdf-btn">Download PDF Report</a>
+        </section>
+        {% endif %}
+
+    </main>
+</div>
+
+</body>
+</html>
